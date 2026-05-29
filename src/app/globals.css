@@ -4,127 +4,346 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ─── Self-hosted fonts ──────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Helvetica-Now";
+  src: url("/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helvetica-Now";
+  src: url("/fonts/HelveticaNowDisplay-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helvetica-Now";
+  src: url("/fonts/HelveticaNowDisplay-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Druk";
+  src: url("/fonts/Druk-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Druk";
+  src: url("/fonts/Druk-Heavy.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arial-Narrow";
+  src: url("/fonts/ArialNarrow-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Fantom theme tokens ─────────────────────────────────────────────────── */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --font-sans: "Helvetica-Now", Arial, sans-serif;
+  --font-heading: "Druk", Arial, sans-serif;
+  --font-narrow: "Arial-Narrow", Arial, sans-serif;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Fantom color palette */
+  --fantom-dark: #13140e;        /* rgb(19, 20, 14) — page background */
+  --fantom-white: #fbfbfb;       /* rgb(251, 251, 251) — primary text */
+  --fantom-green: #219292;       /* rgb(33, 146, 146) — featured products bg */
+  --fantom-yellow: #f2c75b;      /* rgb(242, 199, 91) — skate flicks bg */
+  --fantom-coral: #f2695c;       /* rgb(242, 105, 92) — footer accent */
+
+  --background: #13140e;
+  --foreground: #fbfbfb;
+  --card: #13140e;
+  --card-foreground: #fbfbfb;
+  --primary: #fbfbfb;
+  --primary-foreground: #13140e;
+  --muted: #1e1f18;
+  --muted-foreground: #9a9a8e;
+  --border: rgba(251, 251, 251, 0.15);
+  --input: rgba(251, 251, 251, 0.15);
+  --ring: #fbfbfb;
+  --radius: 0rem;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
-
+/* ─── Global base ─────────────────────────────────────────────────────────── */
 @layer base {
   * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
   html {
-    @apply font-sans;
+    font-family: "Helvetica-Now", Arial, sans-serif;
+    background-color: var(--fantom-dark);
+    color: var(--fantom-white);
+    scroll-behavior: smooth;
   }
+  body {
+    background-color: var(--fantom-dark);
+    color: var(--fantom-white);
+    font-family: "Helvetica-Now", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  ul, ol {
+    list-style: none;
+  }
+  button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+}
+
+/* ─── Typography scale (matches Fantom exactly) ───────────────────────────── */
+.heading-h1 {
+  font-family: "Druk", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 10rem;        /* 160px */
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.heading-h2 {
+  font-family: "Druk", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 5rem;         /* 80px */
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.heading-h3 {
+  font-family: "Druk", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;       /* 40px */
+  line-height: 1;
+  text-transform: uppercase;
+}
+.heading-h4 {
+  font-family: "Druk", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;       /* 40px */
+  line-height: 1;
+}
+.heading-h5 {
+  font-family: "Druk", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;       /* 40px — post card titles */
+  line-height: 1;
+  text-transform: uppercase;
+}
+.nav-link {
+  font-family: "Druk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;       /* 40px */
+  text-transform: uppercase;
+  color: var(--fantom-white);
+}
+.subhead {
+  font-family: "Helvetica-Now", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;      /* 20px */
+}
+.paragraph {
+  font-family: "Helvetica-Now", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;         /* 16px */
+  line-height: 1.5;
+}
+.button-label {
+  font-family: "Druk", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 5rem;         /* 80px */
+  text-transform: uppercase;
+  padding: 12px 8px;
+}
+
+/* ─── Layout grid ─────────────────────────────────────────────────────────── */
+.site-grid {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Nav scroll state ────────────────────────────────────────────────────── */
+.nav-scrolled {
+  background-color: var(--fantom-dark) !important;
+}
+
+/* ─── Swiper-style slider dots / pagination ──────────────────────────────── */
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(251, 251, 251, 0.4);
+  transition: background 0.2s;
+}
+.slider-dot.active {
+  background: var(--fantom-white);
+}
+
+/* ─── Marquee animation (Skate Flicks "View Video" hover text) ───────────── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  animation: marquee-scroll 4s linear infinite;
+  white-space: nowrap;
+}
+.marquee-item {
+  font-family: "Druk", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  padding: 0 1rem;
+  color: var(--fantom-dark);
+}
+
+/* ─── Post card aspect ratio ─────────────────────────────────────────────── */
+.aspect-landscape {
+  aspect-ratio: 16 / 9;
+}
+.aspect-square {
+  aspect-ratio: 1;
+}
+
+/* ─── Section color backgrounds ──────────────────────────────────────────── */
+.bg-fantom-dark   { background-color: var(--fantom-dark); }
+.bg-fantom-green  { background-color: var(--fantom-green); color: var(--fantom-dark); }
+.bg-fantom-yellow { background-color: var(--fantom-yellow); color: var(--fantom-dark); }
+
+/* ─── Film grain (exact skatefantom.com technique) ───────────────────────── */
+@keyframes grain {
+  0%, 100% { transform: translate(0px, 0px); }
+  10%       { transform: translate(-5%, -10%); }
+  20%       { transform: translate(-15%, 5%); }
+  30%       { transform: translate(7%, -25%); }
+  40%       { transform: translate(-5%, 25%); }
+  50%       { transform: translate(-15%, 10%); }
+  60%       { transform: translate(15%, 0%); }
+  70%       { transform: translate(0%, 15%); }
+  80%       { transform: translate(3%, 35%); }
+  90%       { transform: translate(-10%, 10%); }
+}
+
+.grain-zone {
+  position: relative;
+}
+
+.grain-zone::before {
+  content: "";
+  top: -110%;
+  left: -50%;
+  width: 300%;
+  height: 300%;
+  opacity: 0.8;
+  position: absolute;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+  mix-blend-mode: difference;
+  animation: grain 8s steps(10) 0s infinite;
+  background-image: url("/noise-layer.png");
+  background-repeat: repeat;
+}
+
+/* ─── Bootloader gradient bar shift ─────────────────────────────────────── */
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ─── Plan card animations ───────────────────────────────────────────────── */
+@keyframes planFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* opacity-only entrance — no transform so JS tilt isn't overridden */
+.plan-card {
+  animation: planFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.plan-card:nth-child(1) { animation-delay: 0.05s; }
+.plan-card:nth-child(2) { animation-delay: 0.18s; }
+.plan-card:nth-child(3) { animation-delay: 0.31s; }
+
+/* CTA button fill sweep */
+.plan-cta {
+  position: relative;
+  overflow: hidden;
+}
+.plan-cta::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: rgba(242, 199, 91, 0.15);
+  transition: left 0.3s ease;
+}
+.plan-cta:hover::before { left: 0; }
+
+/* Price shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.plan-price {
+  background: linear-gradient(90deg, currentColor 40%, rgba(242,199,91,1) 50%, currentColor 60%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Card hover: yellow text (matches skatefantom.com behaviour) ─────────── */
+.post-card-link:hover h3,
+.post-card-link:hover p,
+.feature-card:hover h3,
+.feature-card:hover p {
+  color: #f2c75b !important;
+  transition: color 0.2s ease;
+}
+
+.post-card-link h3,
+.post-card-link p,
+.feature-card h3,
+.feature-card p {
+  transition: color 0.2s ease;
 }

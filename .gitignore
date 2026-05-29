@@ -47,3 +47,12 @@ next-env.d.ts
 
 # Local temp files
 temp/
+
+# Playwright debug artifacts
+.playwright-mcp/
+
+# Raw research/inspection JSON (large base64 blobs, dev-only)
+docs/research/
+
+# Stray files
+vecteezy_*.png
