@@ -7,6 +7,30 @@ export function CustomCursor() {
   const trailRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const hero   = document.querySelector("main > section:first-child") as HTMLElement | null;
+    const footer = document.querySelector("footer") as HTMLElement | null;
+    if (!hero) return;
+
+    const heroObs = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) document.body.classList.add("past-hero");
+      else                   document.body.classList.remove("past-hero");
+    }, { threshold: 0 });
+
+    const footerObs = footer ? new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) document.body.classList.remove("past-hero");
+      else if (window.scrollY > (hero.offsetHeight ?? 0)) document.body.classList.add("past-hero");
+    }, { threshold: 0 }) : null;
+
+    heroObs.observe(hero);
+    if (footer && footerObs) footerObs.observe(footer);
+
+    return () => {
+      heroObs.disconnect();
+      footerObs?.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
     const dot   = dotRef.current;
     const trail = trailRef.current;
     if (!dot || !trail) return;

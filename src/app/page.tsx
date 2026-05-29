@@ -1,4 +1,5 @@
 import { Bootloader }         from "@/components/Bootloader";
+import { CustomCursor }       from "@/components/CustomCursor";
 import { SiteNav }            from "@/components/SiteNav";
 import { HeroSlider }         from "@/components/HeroSlider";
 import { EmbeddedVideo }      from "@/components/EmbeddedVideo";
@@ -13,21 +14,18 @@ export default function Home() {
   return (
     <>
       <Bootloader />
+      <CustomCursor />
       <SiteNav />
       <main>
         <HeroSlider />
-        <div className="grain-zone">
-          <EmbeddedVideo />
-          <FeaturedProducts />
-          <SpinStories />
-          <TransformationSection />
-          <SkateFlicks />
-          <NewsletterSection />
-        </div>
+        <EmbeddedVideo />
+        <FeaturedProducts />
+        <SpinStories />
+        <TransformationSection />
+        <SkateFlicks />
+        <NewsletterSection />
       </main>
-      <div className="grain-zone">
-        <SiteFooter />
-      </div>
+      <SiteFooter />
     </>
   );
 }
